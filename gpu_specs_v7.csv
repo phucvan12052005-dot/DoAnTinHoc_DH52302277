@@ -1,5 +1,4 @@
-﻿manufacturer,productName,releaseYear,memSize,memBusWidth,gpuClock,memClock,unifiedShader,tmu,rop,pixelShader,vertexShader,igp,bus,memType,gpuChip
-NVIDIA,GeForce RTX 5090,2025,28,448,900,1200,8192,256,128,,,No,PCIe 4.0 x16, HBM2e,Arctic Sound
+﻿NVIDIA,GeForce RTX 5090,2025,28,448,900,1200,8192,256,128,,,No,PCIe 4.0 x16, HBM2e,Arctic Sound
 NVIDIA,GeForce RTX 5080,2025,16,256,900,1215,6912,432,192,,,No,PCIe 4.0 x16,HBM2e,GA100
 NVIDIA,GeForce RTX 5070,2025,12,192,1825,2000,5120,320,128,,,No,PCIe 4.0 x16,GDDR6,Navi 21
 NVIDIA,GeForce RTX 5060 Mobile,2025,8,128,2235,2500,4608,144,48,,,No,PCIe 5.0 x16, GDDR7,GB206

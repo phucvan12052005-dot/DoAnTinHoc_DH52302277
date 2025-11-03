@@ -1,0 +1,47 @@
+Báo cáo cấu trúc dữ liệu từ file csv
+=====================================
+Số dòng dữ liệu: 3056
+Số cột: 16
+
+Tên các cột:
+- Cột 1: ﻿manufacturer
+- Cột 2: productName
+- Cột 3: releaseYear
+- Cột 4: memSize
+- Cột 5: memBusWidth
+- Cột 6: gpuClock
+- Cột 7: memClock
+- Cột 8: unifiedShader
+- Cột 9: tmu
+- Cột 10: rop
+- Cột 11: pixelShader
+- Cột 12: vertexShader
+- Cột 13: igp
+- Cột 14: bus
+- Cột 15: memType
+- Cột 16: gpuChip
+
+Số lượng giá trị thiếu theo từng cột:
+- ﻿manufacturer: 0 giá trị thiếu
+- productName: 0 giá trị thiếu
+- releaseYear: 44 giá trị thiếu
+- memSize: 441 giá trị thiếu
+- memBusWidth: 2868 giá trị thiếu
+- gpuClock: 0 giá trị thiếu
+- memClock: 441 giá trị thiếu
+- unifiedShader: 824 giá trị thiếu
+- tmu: 0 giá trị thiếu
+- rop: 0 giá trị thiếu
+- pixelShader: 2232 giá trị thiếu
+- vertexShader: 2232 giá trị thiếu
+- igp: 0 giá trị thiếu
+- bus: 0 giá trị thiếu
+- memType: 441 giá trị thiếu
+- gpuChip: 0 giá trị thiếu
+
+5 dòng đầu tiên của dữ liệu:
+NVIDIA, GeForce RTX 5090, 2025, 28, 448, 900, 1200, 8192, 256, 128, , , No, PCIe 4.0 x16,  HBM2e, Arctic Sound
+NVIDIA, GeForce RTX 5080, 2025, 16, 256, 900, 1215, 6912, 432, 192, , , No, PCIe 4.0 x16, HBM2e, GA100
+NVIDIA, GeForce RTX 5070, 2025, 12, 192, 1825, 2000, 5120, 320, 128, , , No, PCIe 4.0 x16, GDDR6, Navi 21
+NVIDIA, GeForce RTX 5060 Mobile, 2025, 8, 128, 2235, 2500, 4608, 144, 48, , , No, PCIe 5.0 x16,  GDDR7, GB206
+NVIDIA, GeForce RTX 5060, 2025, 8, 128, 1825, 2250, 4608, 288, 192, , , No, PCIe 4.0 x16,  GDDR6, Navi 31
