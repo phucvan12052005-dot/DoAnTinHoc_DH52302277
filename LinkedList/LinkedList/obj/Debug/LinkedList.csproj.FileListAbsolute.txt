@@ -1,0 +1,14 @@
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.csproj.AssemblyReference.cache
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.Form1.resources
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.Properties.Resources.resources
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.csproj.GenerateResource.cache
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.csproj.CoreCompileInputs.cache
+D:\LinkedList\LinkedList\bin\Debug\LinkedList.exe.config
+D:\LinkedList\LinkedList\bin\Debug\LinkedList.exe
+D:\LinkedList\LinkedList\bin\Debug\LinkedList.pdb
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.exe
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.pdb
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.exe.config
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.NhapGPU.resources
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.SuaGPU.resources
+D:\LinkedList\LinkedList\obj\Debug\LinkedList.Sapxep.resources
