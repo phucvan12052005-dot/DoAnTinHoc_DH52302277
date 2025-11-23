@@ -130,6 +130,12 @@ namespace LinkedList
                 return head;
             }
 
+            public void SetHead(Node<T> newHead)
+            {
+                head = newHead;
+            }
+
+
 
         }
     }

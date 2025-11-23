@@ -161,38 +161,49 @@ namespace LinkedList
             dsGPU.Clear();
         }
 
-        public void SapXepTheoThuocTinh(Func<GPUClass, IComparable> selector, bool tangDan = true)
+        public void SapXepTheoThuocTinh(Func<GPUClass, IComparable> chonThuocTinh, bool tangDan = true)
         {
-            if (dsGPU.IsEmpty()) return;
+            if (dsGPU.IsEmpty() || dsGPU.Count() == 1) return;
 
-            var head = dsGPU.GetHead();
-            bool swapped;
-
-            do
+            // 1) Chuyển linked list sang List
+            var tempList = new List<GPUClass>();
+            var current = dsGPU.GetHead();
+            while (current != null)
             {
-                swapped = false;
-                var current = head;
+                tempList.Add(current.Data);
+                current = current.Next;
+            }
 
-                while (current.Next != null)
+            // 2) Sắp xếp
+            if (tangDan)
+                tempList.Sort((a, b) =>
                 {
-                    GPUClass gpu1 = current.Data;
-                    GPUClass gpu2 = current.Next.Data;
+                    var va = chonThuocTinh(a);
+                    var vb = chonThuocTinh(b);
+                    // xử lý null an toàn
+                    if (va == null && vb == null) return 0;
+                    if (va == null) return -1;
+                    if (vb == null) return 1;
+                    return va.CompareTo(vb);
+                });
+            else
+                tempList.Sort((a, b) =>
+                {
+                    var va = chonThuocTinh(a);
+                    var vb = chonThuocTinh(b);
+                    if (va == null && vb == null) return 0;
+                    if (va == null) return 1;
+                    if (vb == null) return -1;
+                    return vb.CompareTo(va);
+                });
 
-                    int cmp = selector(gpu1).CompareTo(selector(gpu2));
-                    bool condition = tangDan ? cmp > 0 : cmp < 0;
-
-                    if (condition)
-                    {
-                        var temp = current.Data;
-                        current.Data = current.Next.Data;
-                        current.Next.Data = temp;
-                        swapped = true;
-                    }
-
-                    current = current.Next;
-                }
-            } while (swapped);
+            // 3) Ghi lại vào linked list
+            dsGPU.Clear();
+            foreach (var gpu in tempList)
+                dsGPU.AddLast(gpu);
         }
+
+
 
 
 

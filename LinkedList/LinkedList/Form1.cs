@@ -28,6 +28,9 @@ namespace LinkedList
 
             dataGridView1.DataSource = bindingList;
         }
+
+        private Func<GPUClass, IComparable> lastSelector;
+        private bool lastTangDan;
         public Form1()
         {
 
@@ -37,7 +40,7 @@ namespace LinkedList
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+
         }
 
         private void btnDoc_Click(object sender, EventArgs e)
@@ -143,6 +146,10 @@ namespace LinkedList
                 danhMuc.ThemGPU(formNhap.GPU);
                 HienThi();
                 MessageBox.Show("Đã thêm GPU thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (lastSelector != null)
+                    danhMuc.SapXepTheoThuocTinh(lastSelector, lastTangDan);
+
+                HienThi();
             }
         }
 
@@ -169,6 +176,10 @@ namespace LinkedList
                 GPUClass gpuMoi = formSua.GPU;
                 danhMuc.SuaGPU(gpuCu, gpuMoi); // cập nhật node trong danh sách liên kết
                 HienThi(); // cập nhật lại bảng
+                if (lastSelector != null)
+                    danhMuc.SapXepTheoThuocTinh(lastSelector, lastTangDan);
+
+                HienThi();
             }
         }
 
@@ -181,7 +192,11 @@ namespace LinkedList
                 Sapxep sapxep = new Sapxep(danhMuc);
                 if (sapxep.ShowDialog() == DialogResult.OK)
                 {
-                    HienThi(); // cập nhật lại DataGridView sau khi sắp xếp
+                    lastSelector = sapxep.Selector;
+                    lastTangDan = sapxep.TangDan;
+
+                    danhMuc.SapXepTheoThuocTinh(lastSelector, lastTangDan);
+                    HienThi();
                 }
             }
         }

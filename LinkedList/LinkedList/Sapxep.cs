@@ -13,6 +13,8 @@ namespace LinkedList
     public partial class Sapxep : Form
     {
         private DanhMucGPU DanhMuc;
+        public Func<GPUClass, IComparable> Selector { get; private set; }
+        public bool TangDan { get; private set; }
         public Sapxep(DanhMucGPU dm)
         {
             
@@ -42,42 +44,33 @@ namespace LinkedList
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            bool TangDan = comboBoxSapxep.SelectedItem.ToString() == "Tăng dần";
-            if (rbMF.Checked) 
-                DanhMuc.SapXepTheoThuocTinh(g => g.Manufacturer, TangDan);
-            else if (rbBUS.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.Bus, TangDan);
-            else if (rbPN.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.ProductName, TangDan);
-            else if (rbMT.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.MemType, TangDan);
-            else if (rbGPU.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.GpuChip, TangDan);
-            else if (rbyear.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.ReleaseYear, TangDan);
-            else if (rbMS.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.MemSize, TangDan);
-            else if  (rbBW.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.MemBusWidth, TangDan);
-            else if (rbMC.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.MemClock, TangDan);
-            else if (rbUS.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.UnifiedShader, TangDan);
-            else if (rbTMU.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.Tmu, TangDan);
-            else if (rbROP.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.Rop, TangDan);
-            else if (rbPS.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.PixelShader, TangDan);
-            else if (rbVS.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.VertexShader, TangDan);
-            else if(rbGC.Checked)
-                DanhMuc.SapXepTheoThuocTinh(g=>g.VertexShader,TangDan);
-            else
-                DanhMuc.SapXepTheoThuocTinh(g=>g.Igp, TangDan);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-            
+            if (comboBoxSapxep.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn chiều sắp xếp!");
+                return;
+            }
+
+            TangDan = comboBoxSapxep.SelectedItem.ToString() == "Tăng dần";
+
+            if (rbMF.Checked) Selector = g => g.Manufacturer;
+            else if (rbBUS.Checked) Selector = g => g.Bus;
+            else if (rbPN.Checked) Selector = g => g.ProductName;
+            else if (rbMT.Checked) Selector = g => g.MemType;
+            else if (rbGPU.Checked) Selector = g => g.GpuChip;
+            else if (rbyear.Checked) Selector = g => g.ReleaseYear;
+            else if (rbMS.Checked) Selector = g => g.MemSize;
+            else if (rbBW.Checked) Selector = g => g.MemBusWidth;
+            else if (rbMC.Checked) Selector = g => g.MemClock;
+            else if (rbUS.Checked) Selector = g => g.UnifiedShader;
+            else if (rbTMU.Checked) Selector = g => g.Tmu;
+            else if (rbROP.Checked) Selector = g => g.Rop;
+            else if (rbPS.Checked) Selector = g => g.PixelShader;
+            else if (rbVS.Checked) Selector = g => g.VertexShader;
+            else if (rbGC.Checked) Selector = g => g.GpuClock;
+            else Selector = g => g.Igp;
+
+            this.DialogResult = DialogResult.OK; // KHÔNG gọi Close()
         }
+
     }
 }
