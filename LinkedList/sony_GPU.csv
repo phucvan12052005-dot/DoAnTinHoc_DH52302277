@@ -1,0 +1,19 @@
+﻿manufacturer,productName,releaseYear,memSize,memBusWidth,gpuClock,memClock,unifiedShader,tmu,rop,pixelShader,vertexShader,igp,bus,memType,gpuChip
+Sony,Playstation GPU 600nm,1994,1,0,300,325,0,8,8,4,2,No,AGP 4x,DDR,NV25
+Sony,Playstation GPU 350nm,1997,1,0,300,325,0,8,4,4,2,No,AGP 8x,DDR,NV28
+Sony,Playstation 2 GPU 250nm,2000,4,0,1100,1750,3072,192,96,,,No,PCIe 4.0 x16, GDDR6,DG2-512
+Sony,Playstation 2 GPU 180nm,2001,4,0,1000,1753,3072,192,96,,,No,PCIe 3.0 x16,GDDR5,GM200
+Sony,Playstation Portable GPU 90nm,2004,2,0,1110,1750,2560,160,64,,,No,PCIe 3.0 x16,GDDR6,TU104
+Sony,Playstation 2 GPU 90nm,2005,4,0,1650,1937,3072,192,64,,,No,PCIe 3.0 x16,GDDR6,TU104
+Sony,Playstation Portable GPU 65nm,2007,2,0,1680,1750,2560,160,64,,,No,PCIe 4.0 x16,GDDR6,Navi 10
+Sony,Playstation 2 GPU 65nm,2007,4,0,1140,2000,3072,96,48,,,No,PCIe 4.0 x16, GDDR6,AD107
+Sony,Playstation Vita GPU,2011,128,0,667,0,0,4,4,4,,Yes,FSB,,Broadwater
+Sony,Playstation GPU 600nm,1994,1,32,53,33,0,3,1,2,1,No,IGP,VRAM,GTE
+Sony,Playstation GPU 350nm,1997,1,32,53,33,0,3,1,2,1,No,IGP,SGRAM,GTE-2
+Sony,Playstation 2 GPU 250nm,2000,4,2560,147,150,0,8,16,16,2,No,IGP,eDRAM,GS-250nm
+Sony,Playstation 2 GPU 180nm,2001,4,2560,147,150,0,8,16,16,2,No,IGP,eDRAM,GS-180nm
+Sony,Playstation Portable GPU 90nm,2004,2,512,133,83,0,5,5,2,1,No,IGP,eDRAM,RE+SE-90nm
+Sony,Playstation 2 GPU 90nm,2005,4,2560,147,150,0,8,16,16,2,No,IGP,eDRAM,EE+GS-90nm
+Sony,Playstation Portable GPU 65nm,2007,2,512,133,83,0,5,5,2,1,No,IGP,eDRAM,RE+SE-65nm
+Sony,Playstation 2 GPU 65nm,2007,4,2560,147,150,0,8,16,16,2,No,IGP,eDRAM,EE+GS-65nm
+Sony,Playstation Vita GPU,2011,128,64,200,400,0,8,4,4,2,No,IGP,CDRAM,SGX543 MP4+

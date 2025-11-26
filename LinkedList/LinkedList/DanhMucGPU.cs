@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static LinkedList.LinkedList;
 
 namespace LinkedList
 {
@@ -161,49 +163,132 @@ namespace LinkedList
             dsGPU.Clear();
         }
 
+
+
         public void SapXepTheoThuocTinh(Func<GPUClass, IComparable> chonThuocTinh, bool tangDan = true)
         {
             if (dsGPU.IsEmpty() || dsGPU.Count() == 1) return;
 
-            // 1) Chuyển linked list sang List
-            var tempList = new List<GPUClass>();
+            Node<GPUClass> dummy = new Node<GPUClass>(default(GPUClass));
+            dummy.Next = dsGPU.GetHead();
+
+            int n = dsGPU.Count();
+            for (int step = 1; step < n; step *= 2)
+            {
+                Node<GPUClass> prev = dummy;
+                Node<GPUClass> curr = dummy.Next;
+
+                while (curr != null)
+                {
+                    Node<GPUClass> left = curr;
+                    Node<GPUClass> right = Split(left, step);
+                    curr = Split(right, step);
+
+                    Node<GPUClass> merged = SortedMerge(left, right, chonThuocTinh, tangDan);
+                    prev.Next = merged;
+
+                    while (prev.Next != null)
+                        prev = prev.Next;
+                }
+            }
+
+            dsGPU.SetHead(dummy.Next);
+        }
+
+        public Node<GPUClass> Split(Node<GPUClass> head, int size)
+        {
+            for (int i = 1; head != null && i < size; i++)
+                head = head.Next;
+
+            if (head == null) return null;
+
+            Node<GPUClass> next = head.Next;
+            head.Next = null;
+            return next;
+        }
+
+        public Node<GPUClass> SortedMerge(Node<GPUClass> a, Node<GPUClass> b, Func<GPUClass, IComparable> chonThuocTinh, bool tangDan)
+        {
+            Node<GPUClass> dummy = new Node<GPUClass>(default(GPUClass));
+            Node<GPUClass> tail = dummy;
+
+            while (a != null && b != null)
+            {
+                int cmp = chonThuocTinh(a.Data).CompareTo(chonThuocTinh(b.Data));
+                if ((tangDan && cmp <= 0) || (!tangDan && cmp > 0))
+                {
+                    tail.Next = a;
+                    a = a.Next;
+                }
+                else
+                {
+                    tail.Next = b;
+                    b = b.Next;
+                }
+                tail = tail.Next;
+            }
+
+            tail.Next = (a != null) ? a : b;
+            return dummy.Next;
+        }
+
+        public LinkedList.Linkedlist<GPUClass> TimKiemTheoHang(string tenHang)
+        {
+            var ketQua = new LinkedList.Linkedlist<GPUClass>();
+
             var current = dsGPU.GetHead();
             while (current != null)
             {
-                tempList.Add(current.Data);
+                if (!string.IsNullOrEmpty(current.Data.Manufacturer) &&
+                    current.Data.Manufacturer.Equals(tenHang, StringComparison.OrdinalIgnoreCase))
+                {
+                    ketQua.AddLast(current.Data);
+                }
+
                 current = current.Next;
             }
 
-            // 2) Sắp xếp
-            if (tangDan)
-                tempList.Sort((a, b) =>
-                {
-                    var va = chonThuocTinh(a);
-                    var vb = chonThuocTinh(b);
-                    // xử lý null an toàn
-                    if (va == null && vb == null) return 0;
-                    if (va == null) return -1;
-                    if (vb == null) return 1;
-                    return va.CompareTo(vb);
-                });
-            else
-                tempList.Sort((a, b) =>
-                {
-                    var va = chonThuocTinh(a);
-                    var vb = chonThuocTinh(b);
-                    if (va == null && vb == null) return 0;
-                    if (va == null) return 1;
-                    if (vb == null) return -1;
-                    return vb.CompareTo(va);
-                });
-
-            // 3) Ghi lại vào linked list
-            dsGPU.Clear();
-            foreach (var gpu in tempList)
-                dsGPU.AddLast(gpu);
+            return ketQua;
         }
 
+        public LinkedList.Linkedlist<GPUClass> TimKiemTheoTen(string tenSanPham)
+        {
+            // Tạo danh sách kết quả rỗng
+            var ketQua = new LinkedList.Linkedlist<GPUClass>();
 
+            // Duyệt toàn bộ danh sách gốc
+            var current = dsGPU.GetHead();
+            while (current != null)
+            {
+                // So sánh tên sản phẩm (không phân biệt hoa thường)
+                if (!string.IsNullOrEmpty(current.Data.ProductName) &&
+                    current.Data.ProductName.IndexOf(tenSanPham, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    ketQua.AddLast(current.Data);
+                }
+
+                current = current.Next;
+            }
+
+            return ketQua; // trả về DSLK kết quả
+        }
+
+        public LinkedList.Linkedlist<GPUClass> TimKiemTheoNam(float namPhatHanh)
+        {
+            var ketQua = new LinkedList.Linkedlist<GPUClass>();
+
+            var current = dsGPU.GetHead();
+            while (current != null)
+            {
+                if (current.Data.ReleaseYear == namPhatHanh)
+                {
+                    ketQua.AddLast(current.Data);
+                }
+                current = current.Next;
+            }
+
+            return ketQua;
+        }
 
 
 

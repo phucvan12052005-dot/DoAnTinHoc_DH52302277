@@ -20,7 +20,8 @@ namespace LinkedList
             
             InitializeComponent();
             DanhMuc = dm;
-            comboBoxSapxep.SelectedIndex = 0;
+            
+                comboBoxSapxep.SelectedIndex = 1;
         }
 
         public Sapxep()
@@ -69,7 +70,7 @@ namespace LinkedList
             else if (rbGC.Checked) Selector = g => g.GpuClock;
             else Selector = g => g.Igp;
 
-            this.DialogResult = DialogResult.OK; // KHÔNG gọi Close()
+            this.DialogResult = DialogResult.OK; 
         }
 
     }

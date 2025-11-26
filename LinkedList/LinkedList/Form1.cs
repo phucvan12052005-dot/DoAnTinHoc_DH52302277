@@ -94,13 +94,47 @@ namespace LinkedList
                 MessageBox.Show("Không có dữ liệu để ghi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "CSV files (*.csv)|*.csv";
             saveFileDialog.Title = "Lưu danh sách GPU";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                danhMuc.GhiRaFileCSV(saveFileDialog.FileName);
+                using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
+                {
+                    // Ghi dòng tiêu đề
+                    writer.WriteLine("manufacturer,productName,releaseYear,memSize,memBusWidth,gpuClock,memClock,unifiedShader,tmu,rop,pixelShader,vertexShader,igp,bus,memType,gpuChip");
+
+                    // Duyệt qua tất cả các dòng trong DataGridView
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.DataBoundItem is GPUClass gpu)
+                        {
+                            string line = string.Join(",",
+                                gpu.Manufacturer,
+                                gpu.ProductName,
+                                gpu.ReleaseYear.ToString(),
+                                gpu.MemSize.ToString(),
+                                gpu.MemBusWidth.ToString(),
+                                gpu.GpuClock.ToString(),
+                                gpu.MemClock.ToString(),
+                                gpu.UnifiedShader.ToString(),
+                                gpu.Tmu.ToString(),
+                                gpu.Rop.ToString(),
+                                gpu.PixelShader == 0 ? "" : gpu.PixelShader.ToString(),
+                                gpu.VertexShader == 0 ? "" : gpu.VertexShader.ToString(),
+                                gpu.Igp ? "Yes" : "No",
+                                gpu.Bus,
+                                gpu.MemType,
+                                gpu.GpuChip
+                            );
+
+                            writer.WriteLine(line);
+                        }
+                    }
+                }
+
                 MessageBox.Show("Đã ghi file thành công!");
             }
         }
@@ -200,5 +234,113 @@ namespace LinkedList
                 }
             }
         }
+
+        private void btnTimKiem1_Click(object sender, EventArgs e)
+        {
+            string hang = txtTim1.Text.Trim(); // lấy tên hãng từ TextBox
+            var dsKetQua = danhMuc.TimKiemTheoHang(hang);
+
+            if (dsKetQua.IsEmpty())
+            {
+                MessageBox.Show("Không tìm thấy GPU nào của hãng " + hang);
+            }
+            else
+            {
+                // Hiển thị kết quả lên DataGridView
+                BindingList<GPUClass> bindingList = new BindingList<GPUClass>();
+                var current = dsKetQua.GetHead();
+                while (current != null)
+                {
+                    bindingList.Add(current.Data);
+                    current = current.Next;
+                }
+                dataGridView1.DataSource = bindingList;
+            }
+            txtTim1.Text = "";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTroVe_Click(object sender, EventArgs e)
+        {
+            HienThi();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource=null;
+            danhMuc.XoaToanBo();
+        }
+
+        private void btnTimKiem2_Click(object sender, EventArgs e)
+        {
+            string tenSP = txtTim2.Text.Trim();
+            var dsKetQua = danhMuc.TimKiemTheoTen(tenSP);
+
+            if (dsKetQua.IsEmpty())
+            {
+                MessageBox.Show("Không tìm thấy GPU nào có tên chứa: " + tenSP);
+            }
+            else
+            {
+                BindingList<GPUClass> bindingList = new BindingList<GPUClass>();
+                var current = dsKetQua.GetHead();
+                while (current != null)
+                {
+                    bindingList.Add(current.Data);
+                    current = current.Next;
+                }
+                dataGridView1.DataSource = bindingList;
+            }
+            txtTim2.Text = "";
+        }
+
+        private void txtTim3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTim3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // chặn ký tự không hợp lệ
+            }
+        }
+
+        private void btnTimKiem3_Click(object sender, EventArgs e)
+        {
+
+            if (float.TryParse(txtTim3.Text.Trim(), out float nam))
+            {
+                var dsKetQua = danhMuc.TimKiemTheoNam(nam);
+
+                if (dsKetQua.IsEmpty())
+                {
+                    MessageBox.Show("Không tìm thấy GPU nào phát hành năm " + nam);
+                }
+                else
+                {
+                    BindingList<GPUClass> bindingList = new BindingList<GPUClass>();
+                    var current = dsKetQua.GetHead();
+                    while (current != null)
+                    {
+                        bindingList.Add(current.Data);
+                        current = current.Next;
+                    }
+                    dataGridView1.DataSource = bindingList;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập năm hợp lệ!");
+            }
+            txtTim3.Text = "";
+        }
+
     }
+
 }
