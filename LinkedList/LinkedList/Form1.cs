@@ -29,6 +29,16 @@ namespace LinkedList
             dataGridView1.DataSource = bindingList;
         }
 
+        public void GiaoDien(DataGridView dgv)
+        {
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSlateGray;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
         private Func<GPUClass, IComparable> lastSelector;
         private bool lastTangDan;
         public Form1()
@@ -40,9 +50,11 @@ namespace LinkedList
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            btnTroVe2.Visible = false;
+            btnThoat2.Visible = false;
         }
 
+        #region Chức năng Đọc/Ghi File CSV
         private void btnDoc_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -138,7 +150,9 @@ namespace LinkedList
                 MessageBox.Show("Đã ghi file thành công!");
             }
         }
+        #endregion
 
+        #region Các chức năng cơ bản
         private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult chon = MessageBox.Show("Bạn có muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -266,13 +280,47 @@ namespace LinkedList
 
         private void btnTroVe_Click(object sender, EventArgs e)
         {
+            btnTroVe2.Visible = false;
+            btnThoat2.Visible = false;
+            dataGridView1.Visible = true;
+            dgv2.Visible = false;
+            dgv3.Visible = false;
+            btnDoc.Visible = true;
+            btnGhi.Visible = true;
+            btnThem.Visible = true;
+            btnXoa.Visible = true;
+            btnSua.Visible = true;
+            btnSapxep.Visible = true;
+            btnClear.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            txtTim1.Visible = true;
+            txtTim2.Visible = true;
+            txtTim3.Visible = true;
+            btnTimKiem1.Visible = true;
+            btnTimKiem2.Visible = true;
+            btnTimKiem3.Visible = true;
             HienThi();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource=null;
-            danhMuc.XoaToanBo();
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.DataBoundItem is GPUClass gpu)
+                {
+                    danhMuc.XoaGPU(gpu);
+                }
+            }
+
+            dataGridView1.DataSource = null;
         }
 
         private void btnTimKiem2_Click(object sender, EventArgs e)
@@ -341,6 +389,134 @@ namespace LinkedList
             txtTim3.Text = "";
         }
 
+        #endregion
+
+        #region Chức năng lọc
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            if (danhMuc.SoLuong() == 0 || comboBoxThuocTinh.SelectedIndex==-1)
+                MessageBox.Show("Không có dữ liệu để lọc");
+            else
+            {
+                dataGridView1.Visible = false;
+                dgv2.Visible = true;
+                dgv3.Visible = true;
+                lbl4.Visible = true;
+                lbl5.Visible = true;
+                btnTroVe2.Visible = true;
+                btnThoat2.Visible = true;
+                btnDoc.Visible = false;
+                btnGhi.Visible = false;
+                btnThem.Visible = false;
+                btnXoa.Visible = false;
+                btnSua.Visible = false;
+                btnSapxep.Visible = false;
+                btnClear.Visible = false;
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                txtTim1.Visible = false;
+                txtTim2.Visible = false;
+                txtTim3.Visible = false;
+                btnTimKiem1.Visible = false;
+                btnTimKiem2.Visible = false;
+                btnTimKiem3.Visible = false;
+                btnTroVe.Visible = false;
+                btnThoat.Visible = false;
+                //Lọc không trùng
+                if (comboBoxThuocTinh.SelectedItem == null)
+                {
+                    MessageBox.Show("Vui lòng chọn thuộc tính cần lọc!");
+                    return;
+                }
+
+                string thuocTinh = comboBoxThuocTinh.SelectedItem.ToString();
+                lbl4.Text = "Các Loại "+thuocTinh+" có trong danh sách GPU";
+                var dsThongKe = danhMuc.LocTrungTheoThuocTinhDistinct(thuocTinh);
+                dgv2.DataSource = dsThongKe;
+                dgv2.Columns["SoLanLap"].HeaderText = "Số lần lặp";
+                dgv2.Columns["GiaTri"].HeaderText = "Thuộc tính";
+
+                GiaoDien(dgv2);
+
+                var maxList = danhMuc.TimTatCaMaxTheoThuocTinh(thuocTinh);
+                var minList = danhMuc.TimTatCaMinTheoThuocTinh(thuocTinh);
+
+                string maxText = string.Join(" | ", maxList.Select(x => $"{x.GiaTri} ({x.SoLanLap} lần)"));
+                string minText = string.Join(" | ", minList.Select(x => $"{x.GiaTri} ({x.SoLanLap} lần)"));
+                if (maxList != null)
+                {
+                    lbl6.Text = thuocTinh+" = "+maxText+"(Trùng nhiều nhất)";
+                    lbl6.Visible = true;
+                }
+
+                if (minList != null)
+                {
+                    lbl7.Text = thuocTinh + " = " + minText+"(Trùng ít nhất)";
+                    lbl7.Visible = true;
+                }
+
+                lbl5.Text = "Những GPU có "+thuocTinh+" trùng nhau";
+                var dsTrung = danhMuc.LocTrungTheoThuocTinh(thuocTinh);
+                BindingList<GPUClass> List2 = new BindingList<GPUClass>();
+                var current2 = dsTrung.GetHead();
+                while (current2 != null)
+                {
+                    List2.Add(current2.Data);
+                    current2 = current2.Next;
+                }
+                dgv3.DataSource = List2;
+                GiaoDien(dgv3);
+            }
+        }
+
+        private void btnTroVe2_Click(object sender, EventArgs e)
+        {
+            btnTroVe2.Visible = false;
+            btnThoat2.Visible = false;
+            lbl4.Visible = false;
+            lbl5.Visible = false;
+            dataGridView1.Visible = true;
+            dgv2.Visible = false;
+            dgv3.Visible = false;
+            btnDoc.Visible = true;
+            btnGhi.Visible = true;
+            btnThem.Visible = true;
+            btnXoa.Visible = true;
+            btnSua.Visible = true;
+            btnSapxep.Visible = true;
+            btnClear.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            lbl6.Visible = false;
+            lbl7.Visible = false;
+            txtTim1.Visible = true;
+            txtTim2.Visible = true;
+            txtTim3.Visible = true;
+            btnTimKiem1.Visible = true;
+            btnTimKiem2.Visible = true;
+            btnTimKiem3.Visible = true;
+            btnTroVe.Visible = true;
+            btnThoat.Visible = true;
+            HienThi();
+        }
+
+        private void btnThoat2_Click(object sender, EventArgs e)
+        {
+            DialogResult chon = MessageBox.Show("Bạn có muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (chon == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 
 }

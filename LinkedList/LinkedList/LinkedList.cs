@@ -8,6 +8,7 @@ namespace LinkedList
 {
     public class LinkedList
     {
+        #region Class Node
         public class Node<T>
         {
             private T data;
@@ -31,16 +32,24 @@ namespace LinkedList
                 set {  next = value; }
             }
         }
+        #endregion      
 
         public class Linkedlist<T>
         {
+            #region Properties
             private Node<T> head;
+            #endregion
 
+            #region Khởi tạo
             public Linkedlist()
             {
                 this.head = null;
             }
 
+
+            #endregion
+
+            #region Phương Thức
             public void AddFirst(T data)
             {
                 Node<T> newNode = new Node<T>(data);
@@ -134,7 +143,7 @@ namespace LinkedList
             {
                 head = newHead;
             }
-
+            #endregion
 
 
         }

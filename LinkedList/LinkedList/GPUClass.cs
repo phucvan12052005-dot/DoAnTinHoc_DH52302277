@@ -8,10 +8,13 @@ namespace LinkedList
 {
     public class GPUClass
     {
+        #region Properties
         private string manufacturer, productName, bus, memType, gpuChip;
         private float releaseYear,memSize,memBusWidth,gpuClock,memClock,unifiedShader,tmu,rop,pixelShader,vertexShader;
         private bool igp;
+        #endregion
 
+        #region Khởi Tạo
         public GPUClass()
         {
             manufacturer = "";
@@ -51,7 +54,9 @@ namespace LinkedList
             this.vertexShader = vertexShader;
             this.igp = igp;
         }
+        #endregion
 
+        #region Get-Set
         public string Manufacturer { get => manufacturer; set => manufacturer = value; }
         public string ProductName { get => productName; set => productName = value; }
         public string Bus { get => bus; set => bus = value; }
@@ -68,6 +73,13 @@ namespace LinkedList
         public float PixelShader { get => pixelShader; set => pixelShader = value; }
         public float VertexShader { get => vertexShader; set => vertexShader = value; }
         public bool Igp { get => igp; set => igp = value; }
+        #endregion
+
+        public class GPUThongKe
+        {
+            public string GiaTri { get; set; }// Giá trị thuộc tính
+            public int SoLanLap { get; set; }// Số lần xuất hiện
+        }
 
 
 

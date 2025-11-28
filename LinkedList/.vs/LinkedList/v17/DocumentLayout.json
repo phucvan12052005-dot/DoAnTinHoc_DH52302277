@@ -23,24 +23,8 @@
       "RelativeMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|solutionrelative:linkedlist\\linkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|D:\\READFILE\\LinkedList\\linkedlist\\sapxep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|solutionrelative:linkedlist\\sapxep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|D:\\READFILE\\LinkedList\\linkedlist\\sapxep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|solutionrelative:linkedlist\\sapxep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|D:\\READFILE\\LinkedList\\linkedlist\\nhapgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|solutionrelative:linkedlist\\nhapgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|d:\\readfile\\linkedlist\\linkedlist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|D:\\READFILE\\LinkedList\\linkedlist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|solutionrelative:linkedlist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|D:\\READFILE\\LinkedList\\linkedlist\\nhapgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92A86053-7EA5-4BF9-B866-629B38814E84}|LinkedList\\LinkedList.csproj|solutionrelative:linkedlist\\nhapgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,66 +50,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\READFILE\\LinkedList\\LinkedList\\Program.cs",
               "RelativeDocumentMoniker": "LinkedList\\Program.cs",
               "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\Program.cs",
               "RelativeToolTip": "LinkedList\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T13:59:40.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "NhapGPU.cs",
-              "DocumentMoniker": "D:\\READFILE\\LinkedList\\LinkedList\\NhapGPU.cs",
-              "RelativeDocumentMoniker": "LinkedList\\NhapGPU.cs",
-              "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\NhapGPU.cs",
-              "RelativeToolTip": "LinkedList\\NhapGPU.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAUwIoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T13:43:47.245Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "NhapGPU.cs [Design]",
-              "DocumentMoniker": "D:\\READFILE\\LinkedList\\LinkedList\\NhapGPU.cs",
-              "RelativeDocumentMoniker": "LinkedList\\NhapGPU.cs",
-              "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\NhapGPU.cs [Design]",
-              "RelativeToolTip": "LinkedList\\NhapGPU.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T13:43:45.178Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Sapxep.cs",
-              "DocumentMoniker": "D:\\READFILE\\LinkedList\\LinkedList\\Sapxep.cs",
-              "RelativeDocumentMoniker": "LinkedList\\Sapxep.cs",
-              "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\Sapxep.cs",
-              "RelativeToolTip": "LinkedList\\Sapxep.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAcwBcAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T13:25:12.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Sapxep.cs [Design]",
-              "DocumentMoniker": "D:\\READFILE\\LinkedList\\LinkedList\\Sapxep.cs",
-              "RelativeDocumentMoniker": "LinkedList\\Sapxep.cs",
-              "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\Sapxep.cs [Design]",
-              "RelativeToolTip": "LinkedList\\Sapxep.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T13:25:10.889Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-26T13:59:40.019Z"
             },
             {
               "$type": "Document",
@@ -135,10 +68,9 @@
               "RelativeDocumentMoniker": "LinkedList\\LinkedList.cs",
               "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\LinkedList.cs",
               "RelativeToolTip": "LinkedList\\LinkedList.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAJcAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T19:27:02.05Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T19:27:02.05Z"
             },
             {
               "$type": "Document",
@@ -148,10 +80,9 @@
               "RelativeDocumentMoniker": "LinkedList\\GPUClass.cs",
               "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\GPUClass.cs",
               "RelativeToolTip": "LinkedList\\GPUClass.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAowDsAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAA4wFAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T19:12:08.413Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T19:12:08.413Z"
             },
             {
               "$type": "Document",
@@ -161,10 +92,9 @@
               "RelativeDocumentMoniker": "LinkedList\\DanhMucGPU.cs",
               "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\DanhMucGPU.cs",
               "RelativeToolTip": "LinkedList\\DanhMucGPU.cs",
-              "ViewState": "AgIAAAsBAAAAAAAAAAAiwCMBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPIBAAAAAAAAAADwv/8BAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T19:22:21.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T19:22:21.586Z"
             },
             {
               "$type": "Document",
@@ -174,7 +104,7 @@
               "RelativeDocumentMoniker": "LinkedList\\Form1.cs",
               "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\Form1.cs",
               "RelativeToolTip": "LinkedList\\Form1.cs",
-              "ViewState": "AgIAADcBAAAAAAAAAAAUwFQBAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAqwDYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T19:00:30.816Z",
               "EditorCaption": ""
@@ -188,7 +118,7 @@
               "ToolTip": "D:\\READFILE\\LinkedList\\LinkedList\\Form1.cs [Design]",
               "RelativeToolTip": "LinkedList\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T18:58:56.176Z",
+              "WhenOpened": "2025-11-28T11:08:08.347Z",
               "EditorCaption": " [Design]"
             }
           ]
